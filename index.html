@@ -61,16 +61,27 @@
   <script>
     const theme = document.querySelector("#theme");
     theme.addEventListener("change", function (e) {
-      if (theme.value === "dark") {
-        document.documentElement.setAttribute("data-theme", theme.value);
-      }
+      //   if (theme.value === "dark")
+      //     document.documentElement.setAttribute("data-theme", theme.value);
 
-      if (theme.value === "light") {
-        document.documentElement.setAttribute("data-theme", theme.value);
-      }
+      //   if (theme.value === "light")
+      //     document.documentElement.setAttribute("data-theme", theme.value);
 
-      if (theme.value === "system") {
-        document.documentElement.removeAttribute("data-theme", theme.value);
+      //   if (theme.value === "system")
+      //     document.documentElement.removeAttribute("data-theme");
+
+      switch (theme.value) {
+        case "dark":
+          document.documentElement.setAttribute("data-theme", theme.value);
+          break;
+
+        case "light":
+          document.documentElement.setAttribute("data-theme", theme.value);
+          break;
+
+        default:
+          document.documentElement.removeAttribute("data-theme");
+          break;
       }
 
       console.log(theme.value);
