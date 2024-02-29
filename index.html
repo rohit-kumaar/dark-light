@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Light/Dark Mode</title>
+
+    <style>
+      :root {
+        --base: #cfcfcf;
+        --text: #212121;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --base: #212121;
+          --text: #cfcfcf;
+        }
+      }
+
+      html {
+        color-scheme: dark light;
+      }
+
+      body {
+        background: var(--base);
+        color: var(--text);
+      }
+
+      [data-theme="dark"] {
+        --base: #212121;
+        --text: #cfcfcf;
+        color-scheme: dark;
+      }
+
+      [data-theme="light"] {
+        --base: #cfcfcf;
+        --text: #212121;
+        color-scheme: light;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <span>Theme</span>
+      <select id="theme">
+        <option value="system" data-theme="system">system</option>
+        <option value="dark" data-theme="dark">dark</option>
+        <option value="light" data-theme="light">light</option>
+      </select>
+    </div>
+
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloremque quae
+      pariatur excepturi ratione. Dicta cupiditate quaerat, quisquam assumenda
+      exercitationem tempora voluptatum ea ipsa voluptatem accusamus dolor,
+      consequatur animi quos beatae.
+    </p>
+  </body>
+
+  <script>
+    const theme = document.querySelector("#theme");
+    theme.addEventListener("change", function (e) {
+      if (theme.value === "dark") {
+        document.documentElement.setAttribute("data-theme", theme.value);
+      }
+
+      if (theme.value === "light") {
+        document.documentElement.setAttribute("data-theme", theme.value);
+      }
+
+      if (theme.value === "system") {
+        document.documentElement.removeAttribute("data-theme", theme.value);
+      }
+
+      console.log(theme.value);
+    });
+  </script>
+</html>
